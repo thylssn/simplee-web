@@ -64,10 +64,6 @@ Este projeto foi desenvolvido como projeto final da disciplina Programação par
   - [Gerenciamento do Banco de Dados](#gerenciamento-do-banco-de-dados)
   - [Scripts de Desenvolvimento](#scripts-de-desenvolvimento)
 
-## Link do Video Explicativo
-
-[Link Do Video](https://youtu.be/FdJXj8IN7xg?si=mUynHkpqoBzfwWnj)
-
 --- 
 
 ## Principais Diferenciais:
