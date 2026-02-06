@@ -35,7 +35,7 @@ const startServer = async () => {
         await prisma.$connect();
         console.log('Conexão com o Banco de Dados Bem-Sucedida.');
 
-        // SOMENTE se a conexão for bem-sucedida, inicia o servidor Express
+        // Inicia o servidor Express
         app.listen(PORT, () => {
             console.log(`Servidor rodando na porta ${PORT}, Link para LocalHost: http://localhost:${PORT}/login.html`);
         });
@@ -50,4 +50,5 @@ const startServer = async () => {
 };
 
 startServer();
+
 
