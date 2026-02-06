@@ -4,7 +4,7 @@ async function main() {
     console.log('Iniciando teste de conexão...');
 
     console.log('Criando um novo usuário...');
-    // ✅ Você continua usando 'prisma.user'
+
     const newUser = await prisma.user.create({
         data: {
             nome: 'Usuário Teste Mapeado',
@@ -15,7 +15,7 @@ async function main() {
     console.log('Usuário criado:', newUser);
 
     console.log('Buscando todos os usuários...');
-    // ✅ Você continua usando 'prisma.user'
+
     const allUsers = await prisma.user.findMany();
     console.log('Todos os usuários encontrados:');
     console.dir(allUsers, { depth: null });
@@ -30,4 +30,5 @@ main()
     .finally(async () => {
         await prisma.$disconnect();
         console.log('Conexão com o banco fechada.');
+
     });
