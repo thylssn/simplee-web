@@ -1,7 +1,7 @@
 # --- INÍCIO DA DEFINIÇÃO DOS SERVIÇOS/CONTÊINERES ---
 services:
 
-  # 1. SERVIÇO DO NGINX REVERSE PROXY
+  # SERVIÇO DO NGINX REVERSE PROXY
   # Este contêiner atua como um porteiro. Ele recebe todo o tráfego das portas 80 (HTTP)
   # e 443 (HTTPS) e o redireciona para a sua aplicação com base no nome do domínio.
   nginx-proxy:
@@ -17,7 +17,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     restart: always
 
-  # 2. SERVIÇO DO LET'S ENCRYPT
+  # SERVIÇO DO LET'S ENCRYPT
   # Este contêiner trabalha em conjunto com o nginx-proxy para automaticamente
   # solicitar, renovar e instalar certificados SSL/TLS gratuitos do Let's Encrypt.
   letsencrypt-companion:
@@ -33,7 +33,7 @@ services:
       # Informa a este contêiner qual é o contêiner do nginx-proxy
       - NGINX_PROXY_CONTAINER=nginx-proxy
 
-  # 3. O SERVIÇO DA SUA APLICAÇÃO DE BLOG
+  # O SERVIÇO DA SUA APLICAÇÃO DE BLOG
   blog-app:
     # Constrói a imagem a partir do Dockerfile no diretório atual
     build: .
@@ -51,7 +51,6 @@ services:
       - "8000"
     # Variáveis de ambiente que instruem o nginx-proxy sobre como lidar com este serviço
     environment:
-      # --- IMPORTANTE: CONFIGURE ESTAS VARIÁVEIS ---
       # O seu nome de domínio (ex: meublog.com)
       - VIRTUAL_HOST=simplee.zapto.org
       # A porta interna em que a sua aplicação Node.js está a rodar
@@ -60,11 +59,10 @@ services:
       - LETSENCRYPT_HOST=simplee.zapto.org
       # O seu e-mail para receber notificações do Let's Encrypt (ex: sobre renovações)
       - LETSENCRYPT_EMAIL=contato.thalyssondel@gmail.com
-
-# --- FIM DOS SERVIÇOS ---
-
+      
 # Define os volumes que serão partilhados entre os contêineres para persistir os dados
 volumes:
   certs:
   vhost:
   html:
+
